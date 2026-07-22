@@ -1,13 +1,63 @@
-const registerUser = async (payload:any) => {
+import bcrypt from "bcryptjs"
+import config from "../../config"
+import { prisma } from "../../lib/prisma"
+import { RegisterUserPayload } from "./user.interface"
 
+const registerUser = async (payload: RegisterUserPayload) => {
+    const { name, email, password, role } = payload
+
+    const isUserExist = await prisma.user.findUnique({
+        where: { email }
+    })
+
+    if (isUserExist) {
+        throw new Error("User with this email already exists")
+    }
+     
+    const saltRounds = Number(config.bcrypt_salt_rounds) || 10
+    const hashedPassword = await bcrypt.hash(password, saltRounds)
+
+    const createdUser = await prisma.user.create({
+        data: {
+            name,
+            email,
+            password: hashedPassword,
+            role
+        },
+        omit: {
+            password: true
+        }
+    })
+
+    return createdUser
 }
 
-const getUserProfile = async (payload:any) => {
+const getUserProfile = async (userId: string) => { 
+    const user = await prisma.user.findUniqueOrThrow({
+        where: { id: userId },
+        omit: {
+            password: true
+        }
+    })
 
+    return user
 }
 
-const updateUserProfile = async (payload:any) => {
-
+const updateUserProfile = async (userId: string, payload: any) => { 
+    const { name, email } = payload
+    
+    const updatedUser = await prisma.user.update({
+        where: { id: userId },
+        data: {
+            name, 
+            email
+        },
+        omit: {
+            password: true
+        }
+    })
+    
+    return updatedUser
 }
 
 export const userService = {
