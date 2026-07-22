@@ -10,6 +10,12 @@ const createGear = async (payload: ICreateGearPayload, providerId: string) => {
         data: {
             ...payload,
             providerId
+        },
+        include: {
+            category: true, 
+            provider: {
+                select: { id: true, name: true, email: true } 
+            }
         }
     })
     return result
@@ -93,7 +99,13 @@ const updateGear = async (gearId: string, payload: IUpdateGearPayload, providerI
 
     const result = await prisma.gearItem.update({
         where: { id: gearId },
-        data: payload
+        data: payload,
+        include: {
+            category: true, 
+            provider: {
+                select: { id: true, name: true, email: true } 
+            }
+        }
     })
     return result
 }
@@ -112,6 +124,21 @@ const deleteGear = async (gearId: string, providerId: string, isAdmin: boolean) 
     })
 }
 
+const createCategory = async (payload: { name: string }) => {
+    const existingCategory = await prisma.category.findFirst({
+        where: { name: { equals: payload.name, mode: "insensitive" } }
+    })
+
+    if (existingCategory) {
+        throw new Error("A category with this name already exists!")
+    }
+
+    const result = await prisma.category.create({
+        data: payload
+    })
+    return result
+}
+
 const getAllCategories = async () => {
     return await prisma.category.findMany()
 }
@@ -122,5 +149,6 @@ export const gearService = {
     getGearById,
     updateGear,
     deleteGear,
+    createCategory,
     getAllCategories
 }

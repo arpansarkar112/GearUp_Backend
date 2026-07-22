@@ -5,16 +5,21 @@ import { Role } from "../../../generated/prisma/client"
 
 const router = Router()
 
-router.get("/", gearController.getAllGear)
 router.get("/categories", gearController.getAllCategories)
+
+router.get("/", gearController.getAllGear)
 router.get("/:id", gearController.getGearById)
+
+router.post("/categories", 
+    auth(Role.ADMIN), 
+    gearController.createCategory)
 
 const providerRouter = Router()
 
 providerRouter.post(
     "/",
     auth(Role.ADMIN, Role.PROVIDER),
-    gearController.addGear)
+    gearController.createGear)
 
 providerRouter.put(
     "/:id",

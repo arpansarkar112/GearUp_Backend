@@ -4,7 +4,7 @@ import { gearService } from "./gear.service"
 import { sendResponse } from "../../utils/sendResponse"
 import HttpStatus from "http-status"
 
-const addGear = catchAsync(async (req: Request, res: Response, next : NextFunction) => {
+const createGear = catchAsync(async (req: Request, res: Response, next : NextFunction) => {
     const providerId = req.user?.id as string
     const payload = req.body
 
@@ -75,6 +75,19 @@ const deleteGear = catchAsync(async (req: Request, res: Response, next : NextFun
     })
 })
 
+const createCategory = catchAsync(async (req: Request, res: Response, next : NextFunction) => {
+    const payload = req.body;
+
+    const result = await gearService.createCategory(payload);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: HttpStatus.CREATED,
+        message: "Category created successfully",
+        data: result
+    });
+});
+
 const getAllCategories = catchAsync(async (req: Request, res: Response, next : NextFunction) => {
     const result = await gearService.getAllCategories()
 
@@ -87,10 +100,11 @@ const getAllCategories = catchAsync(async (req: Request, res: Response, next : N
 })
 
 export const gearController = {
-    addGear,
+    createGear,
     getAllGear,
     getGearById,
     updateGear,
     deleteGear,
+    createCategory,
     getAllCategories
 }
