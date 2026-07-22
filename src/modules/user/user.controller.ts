@@ -17,7 +17,11 @@ const registerUser = catchAsync(async (req: Request, res: Response, next: NextFu
 })
     
 const getUserProfile = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const userId = req.params.id as string 
+   const userId = req.user?.id as string; 
+
+    if (!userId) {
+        throw new Error("User ID not found in token");
+    }
 
     const profile = await userService.getUserProfile(userId)
 
@@ -30,7 +34,11 @@ const getUserProfile = catchAsync(async (req: Request, res: Response, next: Next
 })
 
 const updateUserProfile = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    const userId = req.params.id as string
+    const userId = req.user?.id as string;
+    
+    if (!userId) {
+        throw new Error("User ID not found in token");
+    }
     const payload = req.body
     
     const updatedProfile = await userService.updateUserProfile(userId, payload)

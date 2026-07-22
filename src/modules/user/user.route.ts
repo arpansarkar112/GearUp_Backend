@@ -1,12 +1,14 @@
 import { Router } from "express";
 import { userController } from "./user.controller";
+import { auth } from "../../middlewares/auth";
+import { Role } from "../../../generated/prisma/client"
 
 const router = Router()
 
-router.post("/register", userController.registerUser)
-
-router.get("/:id", userController.getUserProfile)
-
-router.put("/:id", userController.updateUserProfile)
+router.put(
+    "/my-profile",
+    auth(Role.ADMIN, Role.CUSTOMER, Role.PROVIDER),
+    userController.updateUserProfile
+)
 
 export const userRoutes = router
