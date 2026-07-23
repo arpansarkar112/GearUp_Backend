@@ -1,12 +1,21 @@
 import { Router } from "express";
+import express from "express";
 import { paymentController } from "./payment.controller";
 import { auth } from "../../middlewares/auth";
-import { Role } from "../../../generated/prisma/enums";
+import { Role } from "../../../generated/prisma/client"
 
-const router = Router()
+const router = Router();
 
-router.post("/checkout",
-    auth(Role.ADMIN, Role.CUSTOMER, Role.PROVIDER),
-    paymentController.createCheckoutSession)
+router.post(
+    "/checkout",
+    auth(Role.CUSTOMER),
+    paymentController.createCheckoutSession
+);
 
-export const paymentRoutes = router
+router.post(
+    "/webhook",
+    express.raw({ type: 'application/json' }), 
+    paymentController.handleWebhook
+);
+
+export const paymentRoutes = router;

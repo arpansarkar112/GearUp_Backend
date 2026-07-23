@@ -18,20 +18,18 @@ app.use(cors({
     credentials: true
 }))
 
+app.use("/api/payment/webhook", express.raw({ type: 'application/json' }))
+
 app.use(express.json())
-
-app.use(express.urlencoded({
-    extended: true
-}))
-
+app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
+
 
 app.get('/', async (req: Request, res: Response) => {
     res.send('Hello World!')
 })
 
 app.use("/api/users", userRoutes)
-
 app.use("/api/auth", authRoutes)
 
 app.use("/api/gear", gearRoutes)
@@ -42,10 +40,10 @@ app.use("/api/provider/orders", providerOrderRoutes)
 app.use("/api/admin/rentals", adminRentalRoutes)
 
 app.use("/api/reviews", reviewRoutes)
-
 app.use("/api/admin", adminRoutes)
 
-app.use("api/payment", paymentRoutes)
+app.use("/api/payment", paymentRoutes) 
+
 
 app.use(globalErrorHandler)
 
