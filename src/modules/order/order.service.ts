@@ -9,15 +9,20 @@ const createRentalOrder = async (payload: ICreateRentalPayload, customerId: stri
     const diffTime = Math.abs(end.getTime() - start.getTime())
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1 
 
+    const uniqueGearIds = [...new Set(payload.gearItemIds)]
+
     const gearItems = await prisma.gearItem.findMany({
-        where: { id: { in: payload.gearItemIds } }
+        where: { id: { in: uniqueGearIds } }
     })
 
-    if (gearItems.length !== payload.gearItemIds.length) {
+    if (gearItems.length !== uniqueGearIds.length) {
         throw new Error("One or more gear items were not found or are unavailable.")
     }
 
-    const totalAmount = gearItems.reduce((sum, item) => sum + item.price, 0) * diffDays
+    const totalAmount = payload.gearItemIds.reduce((sum, id) => {
+        const item = gearItems.find(g => g.id === id)
+        return sum + (item?.price || 0)
+    }, 0) * diffDays
 
     const result = await prisma.$transaction(async (tx) => {
         const order = await tx.rentalOrder.create({

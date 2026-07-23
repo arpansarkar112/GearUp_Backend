@@ -40,8 +40,9 @@ const refreshToken = catchAsync(async (req: Request, res: Response, next: NextFu
 
     if (!token) throw new Error("Refresh token not found");
 
-    const { accessToken } = await authService.refreshToken(token)
+    const { accessToken, refreshToken: newRefreshToken } = await authService.refreshToken(token)
     
+
     res.cookie("accessToken", accessToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
@@ -49,11 +50,21 @@ const refreshToken = catchAsync(async (req: Request, res: Response, next: NextFu
         maxAge: 24 * 60 * 60 * 1000  
     })
 
+    res.cookie("refreshToken", newRefreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "none",
+        maxAge: 7 * 24 * 60 * 60 * 1000  
+    })
+
     sendResponse(res, {
         success: true,
         statusCode: HttpStatus.OK,
         message: "Token Refreshed Successfully",
-        data: { accessToken }
+        data: { 
+            accessToken, 
+            refreshToken: newRefreshToken 
+        }
     })
 })
 

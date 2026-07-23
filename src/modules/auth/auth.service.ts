@@ -4,6 +4,7 @@ import { IloginUser } from "./auth.interface"
 import { jwtUtils } from "../../utils/jwt"
 import config from "../../config"
 
+
 const loginUser = async (payload: IloginUser) => {
     const { email, password } = payload
 
@@ -41,8 +42,8 @@ const loginUser = async (payload: IloginUser) => {
     return { accessToken, refreshToken, user }
 }
 
-const refreshToken = async (refreshToken: string) => {
-    const decoded = jwtUtils.verifyToken(refreshToken, config.jwt_refresh_secret as string)
+const refreshToken = async (currentRefreshToken: string) => {
+    const decoded = jwtUtils.verifyToken(currentRefreshToken, config.jwt_refresh_secret as string)
     
     const user = await prisma.user.findUniqueOrThrow({
         where: { id: decoded.id }
@@ -57,13 +58,22 @@ const refreshToken = async (refreshToken: string) => {
         role: user.role
     }
 
-    const accessToken = jwtUtils.createToken(
+    const newAccessToken = jwtUtils.createToken(
         jwtPayload,
         config.jwt_access_secret as string,
         config.jwt_access_expires_in as string
     )
 
-    return { accessToken }
+    const newRefreshToken = jwtUtils.createToken(
+        jwtPayload,
+        config.jwt_refresh_secret as string,
+        config.jwt_refresh_expires_in as string
+    )
+
+    return { 
+        accessToken: newAccessToken, 
+        refreshToken: newRefreshToken 
+    }
 }
 
 export const authService = {

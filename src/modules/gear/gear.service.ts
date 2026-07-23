@@ -46,7 +46,8 @@ const getAllGear = async (query: IGearQuery) => {
     if (query.minPrice) andConditions.push({ price: { gte: Number(query.minPrice) } })
     if (query.maxPrice) andConditions.push({ price: { lte: Number(query.maxPrice) } })
 
-    andConditions.push({ stock: { gt: 0 } })
+    andConditions.push({ stock: { gt: 0 } }) 
+    andConditions.push({ isAvailable: true })
 
     const gear = await prisma.gearItem.findMany({
         where: andConditions.length > 0 ? { AND: andConditions } : {},

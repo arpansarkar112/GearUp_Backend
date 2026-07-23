@@ -20,6 +20,7 @@ const createGearValidationSchema = z.object({
             message: 'Category ID is required',
         }).uuid('Invalid category ID format'),
 
+        stock: z.number().int().nonnegative('Stock cannot be negative').optional(), 
         isAvailable: z.boolean().optional(),
     }),
 })
@@ -31,6 +32,7 @@ const updateGearValidationSchema = z.object({
         price: z.number().positive('Price must be greater than 0').optional(),
         brand: z.string().optional(),
         categoryId: z.string().uuid('Invalid category ID format').optional(),
+        stock: z.number().int().nonnegative().optional(),
         isAvailable: z.boolean().optional(),
     }),
     params: z.object({

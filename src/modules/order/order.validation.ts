@@ -14,12 +14,10 @@ const createRentalOrderValidationSchema = z.object({
             message: 'Invalid end date format (ISO date string expected)',
         }),
 
-        items: z.array(
-            z.object({
-                gearItemId: z.string({
-                    message: 'Gear Item ID is required',
-                }).uuid('Invalid gear item ID format'),
-            })
+        gearItemIds: z.array(
+            z.string({
+                message: 'Each gear item ID must be a string'
+            }).uuid('Invalid gear item ID format')
         ).min(1, 'Rental order must contain at least one gear item'),
     }),
 })
@@ -27,7 +25,7 @@ const createRentalOrderValidationSchema = z.object({
 const updateRentalStatusValidationSchema = z.object({
     body: z.object({
         status: z.enum(['PENDING', 'CONFIRMED', 'PICKED_UP', 'RETURNED'], {
-            message: 'Status must be PENDING, CONFIRMED, PICKED_UP, RETURNED',
+            message: 'Status must be PENDING, CONFIRMED, PICKED_UP, or RETURNED',
         }),
     }),
 })
