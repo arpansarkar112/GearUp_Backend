@@ -6,6 +6,12 @@ import { RegisterUserPayload } from "./user.interface"
 const registerUser = async (payload: RegisterUserPayload) => {
     const { name, email, password, role } = payload
 
+    if (role === "ADMIN") {
+        throw new Error("You cannot register as an Admin. Admins must be created directly in the database.")
+    }
+
+    const safeRole = role === "PROVIDER" ? "PROVIDER" : "CUSTOMER"
+
     const isUserExist = await prisma.user.findUnique({
         where: { email }
     })
@@ -22,7 +28,7 @@ const registerUser = async (payload: RegisterUserPayload) => {
             name,
             email,
             password: hashedPassword,
-            role
+            role: safeRole 
         },
         omit: {
             password: true

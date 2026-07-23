@@ -3,12 +3,20 @@ import { authController } from "./auth.controller";
 import { userController } from "../user/user.controller";
 import { Role } from "../../../generated/prisma/client"
 import { auth } from "../../middlewares/auth";
+import { validateRequest } from "../../middlewares/validateRequest";
+import { authValidation } from "./auth.validation";
 
 const router = Router()
 
-router.post("/register", userController.registerUser)
+router.post(
+    "/register",
+    validateRequest(authValidation.registerValidationSchema),
+    userController.registerUser)
 
-router.post("/login", authController.loginUser)
+router.post(
+    "/login",
+    validateRequest(authValidation.loginValidationSchema),
+    authController.loginUser)
 
 router.post("/refresh-token", authController.refreshToken)
 
