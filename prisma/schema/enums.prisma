@@ -1,0 +1,27 @@
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PICKED_UP
+  RETURNED
+}
+
+enum Role {
+  CUSTOMER
+  PROVIDER
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+}
+
+enum PaymentMethod {
+  STRIPE
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
