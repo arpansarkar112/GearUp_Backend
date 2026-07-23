@@ -1,10 +1,10 @@
-import { Request, Response } from "express"
+import { NextFunction, Request, Response } from "express"
 import HttpStatus from "http-status"
 import { catchAsync } from "../../utils/catchAsync"
 import { sendResponse } from "../../utils/sendResponse"
 import { reviewService } from "./review.service"
 
-const createReview = catchAsync(async (req: Request, res: Response) => {
+const createReview = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const customerId = req.user?.id as string
     const result = await reviewService.createReview(req.body, customerId)
 
@@ -16,7 +16,7 @@ const createReview = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getReviewsByGearId = catchAsync(async (req: Request, res: Response) => {
+const getReviewsByGearId = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const { gearId } = req.params 
     const result = await reviewService.getReviewsByGearId(gearId as string)
 
@@ -28,7 +28,7 @@ const getReviewsByGearId = catchAsync(async (req: Request, res: Response) => {
     })
 })
 
-const getAllReviews = catchAsync(async (req: Request, res: Response) => {
+const getAllReviews = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const result = await reviewService.getAllReviews()
 
     sendResponse(res, {

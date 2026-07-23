@@ -8,6 +8,7 @@ import { globalErrorHandler } from "./middlewares/globalErrorHandler"
 import { gearRoutes, providerGearRoutes } from "./modules/gear/gear.route"
 import { adminRentalRoutes, customerRentalRoutes, providerOrderRoutes } from "./modules/order/order.route"
 import { reviewRoutes } from "./modules/review/review.route"
+import { adminRoutes } from "./modules/admin/admin.route"
 
 const app: Application = express()
 
@@ -40,6 +41,8 @@ app.use("/api/provider/orders", providerOrderRoutes)
 app.use("/api/admin/rentals", adminRentalRoutes)
 
 app.use("/api/reviews", reviewRoutes)
+
+app.use("/api/admin", adminRoutes)
 
 app.use(globalErrorHandler)
 

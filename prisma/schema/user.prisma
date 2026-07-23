@@ -4,13 +4,18 @@ enum Role {
   ADMIN
 }
 
+enum UserStatus {
+  ACTIVE
+  SUSPENDED
+}
+
 model User {
   id       String @id @default(uuid())
   name     String
   email    String @unique
   password String
   role     Role
-  status   String @default("ACTIVE")
+  status   UserStatus @default(ACTIVE)
 
   gearItems    GearItem[]
   rentalOrders RentalOrder[]
