@@ -7,6 +7,7 @@ import { authRoutes } from "./modules/auth/auth.route"
 import { globalErrorHandler } from "./middlewares/globalErrorHandler"
 import { gearRoutes, providerGearRoutes } from "./modules/gear/gear.route"
 import { adminRentalRoutes, customerRentalRoutes, providerOrderRoutes } from "./modules/order/order.route"
+import { reviewRoutes } from "./modules/review/review.route"
 
 const app: Application = express()
 
@@ -37,6 +38,8 @@ app.use("/api/provider/gear", providerGearRoutes)
 app.use("/api/customer/rentals", customerRentalRoutes)
 app.use("/api/provider/orders", providerOrderRoutes)
 app.use("/api/admin/rentals", adminRentalRoutes)
+
+app.use("/api/reviews", reviewRoutes)
 
 app.use(globalErrorHandler)
 

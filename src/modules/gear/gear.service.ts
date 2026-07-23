@@ -12,9 +12,9 @@ const createGear = async (payload: ICreateGearPayload, providerId: string) => {
             providerId
         },
         include: {
-            category: true, 
+            category: true,
             provider: {
-                select: { id: true, name: true, email: true } 
+                select: { id: true, name: true, email: true }
             }
         }
     })
@@ -56,7 +56,7 @@ const getAllGear = async (query: IGearQuery) => {
         include: {
             category: true,
             provider: {
-                select: { id: true, name: true, email: true } 
+                select: { id: true, name: true, email: true }
             }
         }
     })
@@ -82,9 +82,14 @@ const getGearById = async (gearId: string) => {
         include: {
             category: true,
             provider: { select: { id: true, name: true } },
-            reviews: true 
+            reviews: {
+                include: {
+                    customer: { select: { id: true, name: true } }
+                }
+            }
         }
     })
+    
     return gear
 }
 
@@ -101,9 +106,9 @@ const updateGear = async (gearId: string, payload: IUpdateGearPayload, providerI
         where: { id: gearId },
         data: payload,
         include: {
-            category: true, 
+            category: true,
             provider: {
-                select: { id: true, name: true, email: true } 
+                select: { id: true, name: true, email: true }
             }
         }
     })
