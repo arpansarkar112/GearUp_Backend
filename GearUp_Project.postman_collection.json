@@ -28,7 +28,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\" : \"updated name\",\r\n    \"email\": \"google013@gmail.com\"\r\n}",
+              "raw": "{\r\n    \"name\" : \"updated name23\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -36,12 +36,13 @@
               }
             },
             "url": {
-              "raw": "http://localhost:5000/api/users/my-profile",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/users/my-profile",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "users",
@@ -63,7 +64,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"email\": \"admin@gearup.com\",\r\n  \"password\": \"adminpassword123\"\r\n}",
+              "raw": "{\r\n  \"email\": \"john23@example.com\",\r\n  \"password\": \"securepassword123\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -71,12 +72,13 @@
               }
             },
             "url": {
-              "raw": "http://localhost:5000/api/auth/login",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/auth/login",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "auth",
@@ -93,7 +95,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"securepassword123\",\r\n  \"role\": \"CUSTOMER\" \r\n}",
+              "raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john23@example.com\",\r\n  \"password\": \"securepassword123\",\r\n  \"role\": \"CUSTOMER\" \r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -101,12 +103,13 @@
               }
             },
             "url": {
-              "raw": "http://localhost:5000/api/auth/register",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/auth/register",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "auth",
@@ -126,12 +129,13 @@
               "raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"securepassword123\",\r\n  \"role\": \"CUSTOMER\" \r\n}"
             },
             "url": {
-              "raw": "http://localhost:5000/api/auth/refresh-token",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/auth/refresh-token",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "auth",
@@ -157,12 +161,13 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:5000/api/auth/me",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/auth/me",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "auth",
@@ -186,12 +191,13 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "http://localhost:5000/api/gear/a59649ef-e509-47b1-a22f-9556b539d5a4",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/gear/a59649ef-e509-47b1-a22f-9556b539d5a4",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "gear",
@@ -217,12 +223,13 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "http://localhost:5000/api/gear",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/gear",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "gear"
@@ -237,12 +244,13 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "http://localhost:5000/api/gear/categories",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/gear/categories",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "gear",
@@ -272,12 +280,13 @@
                   }
                 },
                 "url": {
-                  "raw": "http://localhost:5000/api/provider/gear/a59649ef-e509-47b1-a22f-9556b539d5a4",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/provider/gear/a59649ef-e509-47b1-a22f-9556b539d5a4",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "provider",
@@ -294,12 +303,13 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                  "raw": "http://localhost:5000/api/provider/gear/0cd6a3c0-b502-4df2-af86-df943737640d",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/provider/gear/0cd6a3c0-b502-4df2-af86-df943737640d",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "provider",
@@ -325,12 +335,13 @@
                   }
                 },
                 "url": {
-                  "raw": "http://localhost:5000/api/provider/gear",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/provider/gear",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "provider",
@@ -360,12 +371,13 @@
                   }
                 },
                 "url": {
-                  "raw": "http://localhost:5000/api/gear/categories",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/gear/categories",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "gear",
@@ -389,7 +401,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"rentalOrderId\": \"ab26d0ce-0a53-418d-93e4-9f4be99e0e8e\"\r\n}",
+              "raw": "{\r\n  \"rentalOrderId\": \"1407279a-047b-459c-a013-3530b906a197\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -397,12 +409,13 @@
               }
             },
             "url": {
-              "raw": "http://localhost:5000/api/payment/checkout",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/payment/checkout",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "payment",
@@ -422,15 +435,16 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"rentalOrderId\": \"ab26d0ce-0a53-418d-93e4-9f4be99e0e8e\"\r\n}"
+              "raw": ""
             },
             "url": {
-              "raw": "http://localhost:5000/api/payment",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/payment",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "payment"
@@ -462,12 +476,13 @@
                   }
                 },
                 "url": {
-                  "raw": "http://localhost:5000/api/customer/rentals",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/customer/rentals",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "customer",
@@ -483,12 +498,13 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "http://localhost:5000/api/customer/rentals",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/customer/rentals",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "customer",
@@ -521,12 +537,13 @@
                   }
                 },
                 "url": {
-                  "raw": "http://localhost:5000/api/provider/orders",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/provider/orders",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "provider",
@@ -551,12 +568,13 @@
                   }
                 },
                 "url": {
-                  "raw": "http://localhost:5000/api/provider/orders/bcaa4987-201b-4ad4-bf53-7856ec18adfb",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/provider/orders/bcaa4987-201b-4ad4-bf53-7856ec18adfb",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "provider",
@@ -585,12 +603,13 @@
                   "raw": "{\r\n    \"email\" : \"google014@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
                 },
                 "url": {
-                  "raw": "http://localhost:5000/api/admin/rentals",
-                  "protocol": "http",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/admin/rentals",
+                  "protocol": "https",
                   "host": [
-                    "localhost"
+                    "gear-up-backend-pi",
+                    "vercel",
+                    "app"
                   ],
-                  "port": "5000",
                   "path": [
                     "api",
                     "admin",
@@ -622,12 +641,13 @@
               }
             },
             "url": {
-              "raw": "http://localhost:5000/api/reviews",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/reviews",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "reviews"
@@ -642,12 +662,13 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:5000/api/reviews/gear/a59649ef-e509-47b1-a22f-9556b539d5a4",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/reviews/gear/a59649ef-e509-47b1-a22f-9556b539d5a4",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "reviews",
@@ -664,12 +685,13 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:5000/api/reviews",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/reviews",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "reviews"
@@ -696,12 +718,13 @@
               "raw": "{\r\n    \"email\" : \"google014@gmail.com\",\r\n    \"password\": \"123456\"\r\n}"
             },
             "url": {
-              "raw": "http://localhost:5000/api/admin/users",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/admin/users",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "admin",
@@ -726,12 +749,13 @@
               }
             },
             "url": {
-              "raw": "http://localhost:5000/api/admin/users/c3703794-6cbc-4fd9-8d01-728b1eb240a6",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/admin/users/c3703794-6cbc-4fd9-8d01-728b1eb240a6",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "admin",
@@ -755,12 +779,13 @@
               "raw": ""
             },
             "url": {
-              "raw": "http://localhost:5000/api/admin/gear",
-              "protocol": "http",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/admin/gear",
+              "protocol": "https",
               "host": [
-                "localhost"
+                "gear-up-backend-pi",
+                "vercel",
+                "app"
               ],
-              "port": "5000",
               "path": [
                 "api",
                 "admin",
