@@ -30,7 +30,19 @@ const updateUserStatus = catchAsync(async (req: Request, res: Response, next: Ne
     })
 })
 
+const getAllGear = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const result = await adminService.getAllGear();
+
+    sendResponse(res, {
+        success: true,
+        statusCode: HttpStatus.OK,
+        message: "All gear retrieved successfully",
+        data: result
+    })
+})
+
 export const adminController = {
     getAllUsers,
-    updateUserStatus
+    updateUserStatus,
+    getAllGear
 }

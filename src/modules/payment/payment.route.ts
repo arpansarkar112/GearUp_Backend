@@ -18,4 +18,10 @@ router.post(
     paymentController.handleWebhook
 );
 
+router.get(
+    "/",
+    auth(Role.CUSTOMER),
+    paymentController.getPaymentHistory
+);
+
 export const paymentRoutes = router;

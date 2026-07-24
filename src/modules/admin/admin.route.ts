@@ -18,4 +18,9 @@ router.patch(
     validateRequest(adminValidation.updateUserStatusValidationSchema),
     adminController.updateUserStatus)
 
+router.get(
+    "/gear",
+    auth(Role.ADMIN),
+    adminController.getAllGear)
+
 export const adminRoutes = router
