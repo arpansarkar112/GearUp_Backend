@@ -47,8 +47,25 @@ const createRentalOrder = async (payload: ICreateRentalPayload, customerId: stri
     return result
 }
 
+const formatOrderWithPaymentStatus = (order: any) => {
+    return {
+        id: order.id,
+        startDate: order.startDate,
+        endDate: order.endDate,
+        totalAmount: order.totalAmount,
+        status: order.status,
+        paymentStatus: order.payment ? order.payment.status : "UNPAID",
+        customerId: order.customerId,
+        createdAt: order.createdAt,
+        updatedAt: order.updatedAt,
+        orderItems: order.orderItems,
+        customer: order.customer,
+        payment: order.payment
+    }
+}
+
 const getMyRentals = async (customerId: string) => {
-    return await prisma.rentalOrder.findMany({
+    const orders = await prisma.rentalOrder.findMany({
         where: { customerId },
         include: {
             orderItems: { include: { gearItem: true } },
@@ -56,10 +73,11 @@ const getMyRentals = async (customerId: string) => {
         },
         orderBy: { createdAt: "desc" }
     })
+    return orders.map(formatOrderWithPaymentStatus)
 }
 
 const getProviderOrders = async (providerId: string) => {
-    return await prisma.rentalOrder.findMany({
+    const orders = await prisma.rentalOrder.findMany({
         where: {
             orderItems: {
                 some: {
@@ -74,6 +92,7 @@ const getProviderOrders = async (providerId: string) => {
         },
         orderBy: { createdAt: "desc" }
     })
+    return orders.map(formatOrderWithPaymentStatus)
 }
 
 const updateOrderStatus = async (orderId: string, status: OrderStatus, providerId: string, isAdmin: boolean) => {
@@ -95,7 +114,7 @@ const updateOrderStatus = async (orderId: string, status: OrderStatus, providerI
 }
 
 const getAllRentals = async () => {
-    return await prisma.rentalOrder.findMany({
+    const orders = await prisma.rentalOrder.findMany({
         include: {
             customer: { select: { name: true, email: true } },
             orderItems: { include: { gearItem: true } },
@@ -103,6 +122,7 @@ const getAllRentals = async () => {
         },
         orderBy: { createdAt: "desc" }
     })
+    return orders.map(formatOrderWithPaymentStatus)
 }
 
 export const rentalService = {
