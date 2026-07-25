@@ -69,7 +69,8 @@ const getProviderOrders = async (providerId: string) => {
         },
         include: {
             orderItems: { include: { gearItem: true } },
-            customer: { select: { id: true, name: true, email: true } }
+            customer: { select: { id: true, name: true, email: true } },
+            payment: true
         },
         orderBy: { createdAt: "desc" }
     })
@@ -97,7 +98,8 @@ const getAllRentals = async () => {
     return await prisma.rentalOrder.findMany({
         include: {
             customer: { select: { name: true, email: true } },
-            orderItems: { include: { gearItem: true } }
+            orderItems: { include: { gearItem: true } },
+            payment: true
         },
         orderBy: { createdAt: "desc" }
     })
