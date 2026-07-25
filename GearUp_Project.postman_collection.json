@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "2b328252-58f1-41b1-8fd8-4de85bb95b4a",
     "name": "GearUp Project",
-    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "description": "[This folder contains the API requests related to the GearUp platform's core features, including authentication, user management, gear management, rental orders, payments, reviews, and admin operations. It is organized by functional areas and user roles to make it easier to test and manage endpoints across customer, provider, public, and administrative workflows.<br><br>](https://learning.postman.com/docs/collections/collections-overview/)",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "54908597",
     "_collection_link": "https://go.postman.co/collection/54908597-2b328252-58f1-41b1-8fd8-4de85bb95b4a?source=collection_link"
@@ -28,7 +28,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\" : \"updated name23\"\r\n}",
+              "raw": "{\r\n    \"name\" : \"arpan23\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -64,7 +64,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"email\": \"john23@example.com\",\r\n  \"password\": \"securepassword123\"\r\n}",
+              "raw": "{\r\n  \"email\": \"arpan21@gearup.com\",\r\n  \"password\": \"superpassword123\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -95,7 +95,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john23@example.com\",\r\n  \"password\": \"securepassword123\",\r\n  \"role\": \"CUSTOMER\" \r\n}",
+              "raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"john5234@example.com\",\r\n  \"password\": \"securepassword123\",\r\n  \"role\": \"PROVIDER\" \r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -191,7 +191,7 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "https://gear-up-backend-pi.vercel.app/api/gear/a59649ef-e509-47b1-a22f-9556b539d5a4",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/gear/004419f6-b220-4e41-94ad-b61a71152bf6",
                   "protocol": "https",
                   "host": [
                     "gear-up-backend-pi",
@@ -201,7 +201,7 @@
                   "path": [
                     "api",
                     "gear",
-                    "a59649ef-e509-47b1-a22f-9556b539d5a4"
+                    "004419f6-b220-4e41-94ad-b61a71152bf6"
                   ]
                 }
               },
@@ -272,7 +272,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"name\": \"Brek Marlin 7 Mountain Bike (reUpdated)\",\r\n  \"price\": 40.00,\r\n  \"stock\": 6,\r\n  \"isAvailable\": true\r\n}",
+                  "raw": "{\r\n  \"name\": \"Stylish Car\",\r\n  \"price\": 2100.00,\r\n  \"stock\": 10\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -280,7 +280,7 @@
                   }
                 },
                 "url": {
-                  "raw": "https://gear-up-backend-pi.vercel.app/api/provider/gear/a59649ef-e509-47b1-a22f-9556b539d5a4",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/provider/gear/16a0ad93-ba76-413a-9d7c-3b4e013fb72d",
                   "protocol": "https",
                   "host": [
                     "gear-up-backend-pi",
@@ -291,7 +291,7 @@
                     "api",
                     "provider",
                     "gear",
-                    "a59649ef-e509-47b1-a22f-9556b539d5a4"
+                    "16a0ad93-ba76-413a-9d7c-3b4e013fb72d"
                   ]
                 }
               },
@@ -303,7 +303,7 @@
                 "method": "DELETE",
                 "header": [],
                 "url": {
-                  "raw": "https://gear-up-backend-pi.vercel.app/api/provider/gear/0cd6a3c0-b502-4df2-af86-df943737640d",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/provider/gear/16a0ad93-ba76-413a-9d7c-3b4e013fb72d",
                   "protocol": "https",
                   "host": [
                     "gear-up-backend-pi",
@@ -314,7 +314,7 @@
                     "api",
                     "provider",
                     "gear",
-                    "0cd6a3c0-b502-4df2-af86-df943737640d"
+                    "16a0ad93-ba76-413a-9d7c-3b4e013fb72d"
                   ]
                 }
               },
@@ -327,7 +327,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"name\": \"Brek Marlin 7 Mountain Bike\",\r\n  \"description\": \"High-performance mountain bike for rugged outdoor terrain and trails.\",\r\n  \"price\": 35.00,\r\n  \"brand\": \"Brek\",\r\n  \"stock\": 5,\r\n  \"isAvailable\": true,\r\n  \"categoryId\": \"9504a423-72bd-42ea-a276-f4812c7b1ca0\"\r\n}",
+                  "raw": "{\r\n  \"name\": \"Car\",\r\n  \"description\": \"Good Car with newest features\",\r\n  \"price\": 2000.00,\r\n  \"brand\": \"Toyota\",\r\n  \"stock\": 5,\r\n  \"isAvailable\": true,\r\n  \"categoryId\": \"214bd22c-b74f-4d64-ad9c-3f30d84806ee\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -363,7 +363,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"name\": \"Camping & Hiking\"\r\n}",
+                  "raw": "{\r\n  \"name\": \"motorway\",\r\n  \"description\": \"different car, vehicle on the road\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -401,7 +401,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"rentalOrderId\": \"1407279a-047b-459c-a013-3530b906a197\"\r\n}",
+              "raw": "{\r\n  \"rentalOrderId\": \"efe841bf-222d-40a8-91c9-1b1535239a09\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -468,7 +468,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"startDate\": \"2026-08-01T10:00:00.000Z\",\r\n  \"endDate\": \"2026-08-05T10:00:00.000Z\",\r\n  \"gearItemIds\": [\r\n    \"a59649ef-e509-47b1-a22f-9556b539d5a4\", \r\n    \"a59649ef-e509-47b1-a22f-9556b539d5a4\", \r\n    \"e813e9ef-62ee-489c-a783-066579b62131\"\r\n  ]\r\n}",
+                  "raw": "{\r\n  \"startDate\": \"2026-08-01\",\r\n  \"endDate\": \"2026-08-05\",\r\n  \"gearItemIds\": [\r\n    \"004419f6-b220-4e41-94ad-b61a71152bf6\", \r\n    \"b836577a-ee73-42b6-bf9a-97458b917646\"\r\n  ]\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -560,7 +560,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n  \"status\": \"PICKED_UP\"\r\n}",
+                  "raw": "{\r\n  \"status\": \"RETURNED\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -568,7 +568,7 @@
                   }
                 },
                 "url": {
-                  "raw": "https://gear-up-backend-pi.vercel.app/api/provider/orders/bcaa4987-201b-4ad4-bf53-7856ec18adfb",
+                  "raw": "https://gear-up-backend-pi.vercel.app/api/provider/orders/efe841bf-222d-40a8-91c9-1b1535239a09",
                   "protocol": "https",
                   "host": [
                     "gear-up-backend-pi",
@@ -579,7 +579,7 @@
                     "api",
                     "provider",
                     "orders",
-                    "bcaa4987-201b-4ad4-bf53-7856ec18adfb"
+                    "efe841bf-222d-40a8-91c9-1b1535239a09"
                   ]
                 }
               },
@@ -633,7 +633,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"gearItemId\": \"a59649ef-e509-47b1-a22f-9556b539d5a4\",\r\n  \"rating\": 5,\r\n  \"comment\": \"Amazing gear! Handled the rough outdoor trails perfectly and was very clean upon pickup.\"\r\n}",
+              "raw": "{\r\n  \"gearItemId\": \"004419f6-b220-4e41-94ad-b61a71152bf6\",\r\n  \"rating\": 4,\r\n  \"comment\": \"Amazing Ccar! loved it.\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -662,7 +662,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "https://gear-up-backend-pi.vercel.app/api/reviews/gear/a59649ef-e509-47b1-a22f-9556b539d5a4",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/reviews/gear/004419f6-b220-4e41-94ad-b61a71152bf6",
               "protocol": "https",
               "host": [
                 "gear-up-backend-pi",
@@ -673,7 +673,7 @@
                 "api",
                 "reviews",
                 "gear",
-                "a59649ef-e509-47b1-a22f-9556b539d5a4"
+                "004419f6-b220-4e41-94ad-b61a71152bf6"
               ]
             }
           },
@@ -749,7 +749,7 @@
               }
             },
             "url": {
-              "raw": "https://gear-up-backend-pi.vercel.app/api/admin/users/c3703794-6cbc-4fd9-8d01-728b1eb240a6",
+              "raw": "https://gear-up-backend-pi.vercel.app/api/admin/users/33735ea2-022d-4a03-bed5-128188039242",
               "protocol": "https",
               "host": [
                 "gear-up-backend-pi",
@@ -760,7 +760,7 @@
                 "api",
                 "admin",
                 "users",
-                "c3703794-6cbc-4fd9-8d01-728b1eb240a6"
+                "33735ea2-022d-4a03-bed5-128188039242"
               ]
             }
           },
