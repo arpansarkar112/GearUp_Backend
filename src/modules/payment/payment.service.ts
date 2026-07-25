@@ -22,8 +22,8 @@ const createCheckoutSession = async (userId: string, rentalOrderId: string) => {
         throw new Error("Rental order not found.") 
     }
 
-    if (rentalOrder.status !== OrderStatus.PENDING) {
-        throw new Error(`You cannot pay for this order because its status is already ${rentalOrder.status}`)
+    if (rentalOrder.status !== OrderStatus.CONFIRMED) {
+        throw new Error(`You can only pay for this order after it has been confirmed by the provider. Current status: ${rentalOrder.status}`)
     }
 
     if (rentalOrder.customerId !== userId) {
@@ -106,12 +106,8 @@ const handleWebhook = async (eventBuffer: Buffer, signature: string, endpointSec
                     },
                 });
 
-                await tx.rentalOrder.update({
-                    where: { id: rentalOrderId },
-                    data: {
-                        status: OrderStatus.CONFIRMED, 
-                    },
-                });
+                // We do not need to update the rental order status to CONFIRMED again.
+                // The payment status is tracked in the Payment table as COMPLETED.
             }, {
    
                 maxWait: 8000,
