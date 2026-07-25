@@ -106,8 +106,13 @@ const handleWebhook = async (eventBuffer: Buffer, signature: string, endpointSec
                     },
                 });
 
-                // We do not need to update the rental order status to CONFIRMED again.
-                // The payment status is tracked in the Payment table as COMPLETED.
+                // Update the rental order status to PAID since payment was successful
+                await tx.rentalOrder.update({
+                    where: { id: rentalOrderId },
+                    data: {
+                        status: OrderStatus.PAID, 
+                    },
+                });
             }, {
    
                 maxWait: 8000,
