@@ -106,11 +106,10 @@ const handleWebhook = async (eventBuffer: Buffer, signature: string, endpointSec
                     },
                 });
 
-                // Update the rental order status to PAID since payment was successful
                 await tx.rentalOrder.update({
                     where: { id: rentalOrderId },
                     data: {
-                        status: OrderStatus.PAID, 
+                        status: OrderStatus.CONFIRMED, 
                     },
                 });
             }, {

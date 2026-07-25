@@ -1,4 +1,4 @@
-import { OrderStatus } from "../../../generated/prisma/enums"
+import { OrderStatus, PaymentStatus } from "../../../generated/prisma/enums"
 import { prisma } from "../../lib/prisma"
 import { ICreateRentalPayload } from "./order.interface"
 
@@ -54,7 +54,7 @@ const formatOrderWithPaymentStatus = (order: any) => {
         endDate: order.endDate,
         totalAmount: order.totalAmount,
         status: order.status,
-        paymentStatus: order.payment ? order.payment.status : "UNPAID",
+        paymentStatus: order.payment ? order.payment.status : PaymentStatus.PENDING,
         customerId: order.customerId,
         createdAt: order.createdAt,
         updatedAt: order.updatedAt,
