@@ -126,10 +126,44 @@ const handleWebhook = async (eventBuffer: Buffer, signature: string, endpointSec
 }
 
 const getPaymentHistory = async (userId: string) => {
-    return await prisma.payment.findMany({
-        where: { rentalOrder: { customerId: userId } },
-        include: { rentalOrder: { select: { id: true, totalAmount: true, status: true, startDate: true, endDate: true } } },
-        orderBy: { paidAt: "desc" }
+    const orders = await prisma.rentalOrder.findMany({
+        where: { customerId: userId },
+        include: { payment: true },
+        orderBy: { createdAt: "desc" }
+    });
+
+    return orders.map(order => {
+        if (order.payment) {
+            return {
+                ...order.payment,
+                rentalOrder: {
+                    id: order.id,
+                    totalAmount: order.totalAmount,
+                    status: order.status,
+                    startDate: order.startDate,
+                    endDate: order.endDate
+                }
+            };
+        } else {
+            return {
+                id: null,
+                transactionId: null,
+                amount: order.totalAmount,
+                method: PaymentMethod.STRIPE,
+                status: PaymentStatus.PENDING,
+                paidAt: null,
+                rentalOrderId: order.id,
+                createdAt: order.createdAt,
+                updatedAt: order.updatedAt,
+                rentalOrder: {
+                    id: order.id,
+                    totalAmount: order.totalAmount,
+                    status: order.status,
+                    startDate: order.startDate,
+                    endDate: order.endDate
+                }
+            };
+        }
     });
 }
 
