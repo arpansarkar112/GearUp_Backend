@@ -125,9 +125,11 @@ const deleteGear = async (gearId: string, providerId: string, isAdmin: boolean) 
         throw new Error("You do not have permission to delete this gear item.")
     }
 
-    await prisma.gearItem.delete({
-        where: { id: gearId }
-    })
+    await prisma.$transaction([
+        prisma.rentalOrderItem.deleteMany({ where: { gearItemId: gearId } }),
+        prisma.review.deleteMany({ where: { gearItemId: gearId } }),
+        prisma.gearItem.delete({ where: { id: gearId } })
+    ])
 }
 
 const createCategory = async (payload: { name: string; image?: string }) => {
