@@ -99,9 +99,22 @@ const getAllCategories = catchAsync(async (req: Request, res: Response, next : N
     })
 })
 
+const getProviderGear = catchAsync(async (req: Request, res: Response, next : NextFunction) => {
+    const providerId = req.user?.id as string
+    const result = await gearService.getProviderGear(providerId)
+
+    sendResponse(res, {
+        success: true,
+        statusCode: HttpStatus.OK,
+        message: "Provider gear retrieved successfully",
+        data: result
+    })
+})
+
 export const gearController = {
     createGear,
     getAllGear,
+    getProviderGear,
     getGearById,
     updateGear,
     deleteGear,

@@ -19,6 +19,12 @@ router.post("/categories",
 
 const providerRouter = Router()
 
+providerRouter.get(
+    "/",
+    auth(Role.ADMIN, Role.PROVIDER),
+    gearController.getProviderGear
+)
+
 providerRouter.post(
     "/",
     auth(Role.ADMIN, Role.PROVIDER),

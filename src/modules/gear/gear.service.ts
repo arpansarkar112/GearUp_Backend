@@ -149,9 +149,21 @@ const getAllCategories = async () => {
     return await prisma.category.findMany()
 }
 
+const getProviderGear = async (providerId: string) => {
+    return await prisma.gearItem.findMany({
+        where: { providerId },
+        orderBy: { createdAt: "desc" },
+        include: {
+            category: true,
+            provider: { select: { id: true, name: true, email: true } }
+        }
+    })
+}
+
 export const gearService = {
     createGear,
     getAllGear,
+    getProviderGear,
     getGearById,
     updateGear,
     deleteGear,
