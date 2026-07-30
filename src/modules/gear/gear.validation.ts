@@ -51,6 +51,7 @@ const createCategoryValidationSchema = z.object({
         name: z.string({
             message: 'Category name is required',
         }).min(2, 'Category name must be at least 2 characters'),
+        image: z.string().optional(),
     }),
 })
 

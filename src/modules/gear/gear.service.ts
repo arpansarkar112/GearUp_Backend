@@ -130,7 +130,7 @@ const deleteGear = async (gearId: string, providerId: string, isAdmin: boolean) 
     })
 }
 
-const createCategory = async (payload: { name: string }) => {
+const createCategory = async (payload: { name: string; image?: string }) => {
     const existingCategory = await prisma.category.findFirst({
         where: { name: { equals: payload.name, mode: "insensitive" } }
     })
