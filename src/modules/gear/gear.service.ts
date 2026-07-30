@@ -147,6 +147,28 @@ const createCategory = async (payload: { name: string; image?: string }) => {
     return result
 }
 
+const updateCategory = async (categoryId: string, payload: { name?: string; description?: string }) => {
+    const category = await prisma.category.findUniqueOrThrow({
+        where: { id: categoryId }
+    })
+
+    if (payload.name && payload.name !== category.name) {
+        const existingCategory = await prisma.category.findFirst({
+            where: { name: { equals: payload.name, mode: "insensitive" } }
+        })
+
+        if (existingCategory) {
+            throw new Error("A category with this name already exists!")
+        }
+    }
+
+    const result = await prisma.category.update({
+        where: { id: categoryId },
+        data: payload
+    })
+    return result
+}
+
 const getAllCategories = async () => {
     return await prisma.category.findMany()
 }
@@ -170,5 +192,6 @@ export const gearService = {
     updateGear,
     deleteGear,
     createCategory,
+    updateCategory,
     getAllCategories
 }

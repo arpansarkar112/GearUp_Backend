@@ -41,8 +41,20 @@ const getAllGear = catchAsync(async (req: Request, res: Response, next: NextFunc
     })
 })
 
+const getAllPayments = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const result = await adminService.getAllPayments();
+
+    sendResponse(res, {
+        success: true,
+        statusCode: HttpStatus.OK,
+        message: "All payments retrieved successfully",
+        data: result
+    })
+})
+
 export const adminController = {
     getAllUsers,
     updateUserStatus,
-    getAllGear
+    getAllGear,
+    getAllPayments
 }

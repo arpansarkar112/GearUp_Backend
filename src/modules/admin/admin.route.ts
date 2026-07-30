@@ -23,4 +23,9 @@ router.get(
     auth(Role.ADMIN),
     adminController.getAllGear)
 
+router.get(
+    "/payments",
+    auth(Role.ADMIN),
+    adminController.getAllPayments)
+
 export const adminRoutes = router

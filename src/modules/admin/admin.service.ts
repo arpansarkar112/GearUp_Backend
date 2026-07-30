@@ -49,8 +49,16 @@ const getAllGear = async () => {
     });
 }
 
+const getAllPayments = async () => {
+    return await prisma.payment.findMany({
+        include: { rentalOrder: { include: { customer: { select: { name: true, email: true } } } } },
+        orderBy: { createdAt: "desc" }
+    });
+}
+
 export const adminService = {
     getAllUsers,
     updateUserStatus,
-    getAllGear
+    getAllGear,
+    getAllPayments
 }

@@ -88,6 +88,20 @@ const createCategory = catchAsync(async (req: Request, res: Response, next : Nex
     });
 });
 
+const updateCategory = catchAsync(async (req: Request, res: Response, next : NextFunction) => {
+    const categoryId = req.params.id;
+    const payload = req.body;
+
+    const result = await gearService.updateCategory(categoryId, payload);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: HttpStatus.OK,
+        message: "Category updated successfully",
+        data: result
+    });
+});
+
 const getAllCategories = catchAsync(async (req: Request, res: Response, next : NextFunction) => {
     const result = await gearService.getAllCategories()
 
@@ -119,5 +133,6 @@ export const gearController = {
     updateGear,
     deleteGear,
     createCategory,
+    updateCategory,
     getAllCategories
 }

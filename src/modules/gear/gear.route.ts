@@ -17,6 +17,10 @@ router.post("/categories",
     validateRequest(gearValidation.createCategoryValidationSchema),
     gearController.createCategory)
 
+router.put("/categories/:id",
+    auth(Role.ADMIN),
+    gearController.updateCategory)
+
 const providerRouter = Router()
 
 providerRouter.get(
