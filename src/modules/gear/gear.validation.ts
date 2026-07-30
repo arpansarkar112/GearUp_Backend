@@ -22,6 +22,7 @@ const createGearValidationSchema = z.object({
 
         stock: z.number().int().nonnegative('Stock cannot be negative').optional(), 
         isAvailable: z.boolean().optional(),
+        imageUrl: z.string().url('Invalid image URL').optional().or(z.literal("")),
     }),
 })
 
@@ -34,6 +35,7 @@ const updateGearValidationSchema = z.object({
         categoryId: z.string().uuid('Invalid category ID format').optional(),
         stock: z.number().int().nonnegative().optional(),
         isAvailable: z.boolean().optional(),
+        imageUrl: z.string().url('Invalid image URL').optional().or(z.literal("")),
     }),
     params: z.object({
         id: z.string().uuid('Invalid gear ID format in URL parameter'),
