@@ -58,6 +58,9 @@ const getAllGear = async (query: IGearQuery) => {
             category: true,
             provider: {
                 select: { id: true, name: true, email: true }
+            },
+            reviews: {
+                select: { rating: true }
             }
         }
     })
