@@ -89,7 +89,7 @@ const createCategory = catchAsync(async (req: Request, res: Response, next : Nex
 });
 
 const updateCategory = catchAsync(async (req: Request, res: Response, next : NextFunction) => {
-    const categoryId = req.params.id;
+    const categoryId = req.params.id as string;
     const payload = req.body;
 
     const result = await gearService.updateCategory(categoryId, payload);
