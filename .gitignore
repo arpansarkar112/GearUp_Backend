@@ -1,8 +1,8 @@
 node_modules
 dist
-.env
 generated
 /generated/prisma
 .agents
 .claude
 .windsurf
+config.bat
