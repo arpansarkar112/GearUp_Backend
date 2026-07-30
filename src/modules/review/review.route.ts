@@ -8,6 +8,7 @@ import { reviewValidation } from "./review.validation"
 const router = Router()
 
 router.get("/gear/:gearId", reviewController.getReviewsByGearId)
+router.get("/provider", auth(Role.PROVIDER), reviewController.getProviderReviews)
 router.get("/", reviewController.getAllReviews)
 
 router.post(

@@ -39,8 +39,21 @@ const getAllReviews = catchAsync(async (req: Request, res: Response, next: NextF
     })
 })
 
+const getProviderReviews = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const providerId = req.user?.id as string
+    const result = await reviewService.getProviderReviews(providerId)
+
+    sendResponse(res, {
+        success: true,
+        statusCode: HttpStatus.OK,
+        message: "Provider reviews retrieved successfully",
+        data: result
+    })
+})
+
 export const reviewController = {
     createReview,
     getReviewsByGearId,
-    getAllReviews
+    getAllReviews,
+    getProviderReviews
 }
