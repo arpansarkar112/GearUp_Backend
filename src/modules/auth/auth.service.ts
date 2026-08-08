@@ -1,8 +1,9 @@
 import bcrypt from "bcryptjs"
 import { prisma } from "../../lib/prisma"
-import { IloginUser } from "./auth.interface"
+import { IloginUser, IsocialLoginUser } from "./auth.interface"
 import { jwtUtils } from "../../utils/jwt"
 import config from "../../config"
+import crypto from "crypto"
 
 
 const loginUser = async (payload: IloginUser) => {
@@ -76,7 +77,55 @@ const refreshToken = async (currentRefreshToken: string) => {
     }
 }
 
+const socialLoginUserIntoDB = async (payload: IsocialLoginUser) => {
+    const { email, name, role } = payload;
+
+    let user = await prisma.user.findUnique({
+        where: { email }
+    });
+
+    if (!user) {
+        const randomPassword = crypto.randomBytes(16).toString("hex");
+        const hashedPassword = await bcrypt.hash(randomPassword, 12);
+
+        user = await prisma.user.create({
+            data: {
+                name,
+                email,
+                password: hashedPassword,
+                role: role as any,
+            }
+        });
+    }
+
+    if (user.status !== "ACTIVE") {
+        throw new Error("Your account has been suspended. Please contact support.");
+    }
+
+    const jwtPayload = {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+    };
+
+    const accessToken = jwtUtils.createToken(
+        jwtPayload,
+        config.jwt_access_secret as string,
+        config.jwt_access_expires_in as string
+    );
+
+    const refreshToken = jwtUtils.createToken(
+        jwtPayload,
+        config.jwt_refresh_secret as string,
+        config.jwt_refresh_expires_in as string
+    );
+
+    return { accessToken, refreshToken, user };
+}
+
 export const authService = {
     loginUser,
-    refreshToken
+    refreshToken,
+    socialLoginUserIntoDB
 }

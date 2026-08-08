@@ -20,6 +20,11 @@ router.post(
 
 router.post("/refresh-token", authController.refreshToken)
 
+router.post(
+    "/social-login",
+    validateRequest(authValidation.socialLoginValidationSchema),
+    authController.socialLoginUser)
+
 router.get(
     "/me",
     auth(Role.ADMIN, Role.CUSTOMER, Role.PROVIDER),
