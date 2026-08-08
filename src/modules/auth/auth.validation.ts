@@ -32,7 +32,24 @@ const loginValidationSchema = z.object({
     }),
 })
 
+const socialLoginValidationSchema = z.object({
+    body: z.object({
+        name: z.string({
+            message: 'Name is required and must be a string',
+        }).min(2, 'Name must be at least 2 characters'),
+
+        email: z.string({
+            message: 'Email is required',
+        }).email('Invalid email address'),
+
+        role: z.enum(['CUSTOMER', 'PROVIDER'], {
+            message: 'Role must be either CUSTOMER or PROVIDER',
+        }),
+    }),
+})
+
 export const authValidation = {
     registerValidationSchema,
     loginValidationSchema,
+    socialLoginValidationSchema,
 }

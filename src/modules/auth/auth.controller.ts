@@ -68,7 +68,38 @@ const refreshToken = catchAsync(async (req: Request, res: Response, next: NextFu
     })
 })
 
+const socialLoginUser = catchAsync(async (req: Request, res: Response, next: NextFunction) => { 
+    const payload = req.body
+    const { accessToken, refreshToken, user } = await authService.socialLoginUserIntoDB(payload)
+    
+    res.cookie("accessToken", accessToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "none",
+        maxAge: 24 * 60 * 60 * 1000  // 1 day
+    })
+
+    res.cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "none",
+        maxAge: 7 * 24 * 60 * 60 * 1000  // 7 days
+    })
+
+    sendResponse(res, {
+        success: true,
+        statusCode: HttpStatus.OK,
+        message: "Social user logged in successfully",
+        data: {
+            user: { id: user.id, name: user.name, email: user.email, role: user.role },
+            accessToken, 
+            refreshToken
+        }
+    })
+})
+
 export const authController = {
     loginUser,
-    refreshToken
+    refreshToken,
+    socialLoginUser
 }
